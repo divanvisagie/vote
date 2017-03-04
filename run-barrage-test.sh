@@ -3,4 +3,4 @@
 sbt docker:publishLocal
 docker-compose up -d
 npm run barrage
-docker-compose stop
+# docker-compose stop

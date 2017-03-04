@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sbt docker:publishLocal
+sbt docker:stage
 docker-compose up -d

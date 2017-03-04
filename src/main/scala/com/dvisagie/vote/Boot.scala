@@ -16,8 +16,13 @@ object Boot extends VoteService {
   implicit val materializer = ActorMaterializer()
 
   def main(args: Array[String]) {
-    val port = 8080
-    Http().bindAndHandle(routes, "localhost", port)
+    val port = 5000
+    val bindingFuture = Http().bindAndHandle(routes, "0.0.0.0", port)
     println(s"Server online at http://localhost:$port/")
+//    bindingFuture
+//      .onComplete(e => {
+//        println(s"Binding failure, terminating: ${e}")
+//        system.terminate()
+//      }) // and shutdown when done
   }
 }

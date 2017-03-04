@@ -4,7 +4,12 @@ version := "1.0"
 scalaVersion := "2.11.8"
 
 scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
-enablePlugins(JavaServerAppPackaging)
+enablePlugins(JavaAppPackaging)
+
+packageName in Docker := "divanvisagie/vote"
+dockerExposedPorts := Seq(5000)
+version in Docker := "1.1.2"
+
 
 libraryDependencies ++= {
   val akkaV       = "2.4.16"
