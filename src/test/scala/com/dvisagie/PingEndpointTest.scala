@@ -1,12 +1,10 @@
 package com.dvisagie
 
-import akka.http.scaladsl.model.HttpHeader.ParsingResult.Ok
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import akka.util.Timeout
 import com.dvisagie.vote.PingRoutes
 import org.scalatest.{FlatSpec, Matchers}
-import akka.http.scaladsl.model.StatusCodes._
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.concurrent.duration._

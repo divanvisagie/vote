@@ -9,8 +9,6 @@ import akka.pattern.ask
 import com.dvisagie.vote.actors.UserControllerActor
 import com.dvisagie.vote.actors.UserControllerActor.{CreateUserRequest, CreationRequestResponse, UserResponse}
 import com.dvisagie.vote.repositories.UserRepository
-import com.dvisagie.vote.actors.UserControllerActor
-import com.dvisagie.vote.actors.UserControllerActor.{CreateUserRequest, CreationRequestResponse, UserResponse}
 import spray.json.RootJsonFormat
 
 import scala.util.{Failure, Success}
