@@ -13,6 +13,8 @@
     "artillery": "^1.5.2"
   },
   "scripts": {
-    "barrage" : "artillery quick --duration 60 --rate 10 -n 20 http://localhost:8080/api/ping"
+    "barrage" : "artillery quick --duration 60 --rate 10 -n 20 http://localhost:8080/api/ping",
+    "website": "artillery quick --duration 60 --rate 10 -n 20 http://localhost:8080/website",
+    "notFound": "artillery quick --duration 60 --rate 10 -n 20 http://localhost:8080/api/doesnotexist"
   }
 }

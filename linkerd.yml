@@ -4,9 +4,13 @@ admin:
 routers:
   - protocol: http
     label: web-http
+    identifier:
+        kind: io.l5d.path
+        segments: 1
+        consume: true
     baseDtab: |
-       /host  => /$/inet/vote_web/80;
-       /http/1.1/* => /host
+       /http/api  => /$/inet/vote_api/5000;
+       /http/website  => /$/inet/vote_web/80;
     servers:
       - port: 8080
         ip: 0.0.0.0
