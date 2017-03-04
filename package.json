@@ -8,5 +8,11 @@
     "type": "git"
   },
   "author": "Divan Visagie <visagiedivan@gmail.com>",
-  "license": "Apache 2"
+  "license": "Apache 2",
+  "dependencies": {
+    "artillery": "^1.5.2"
+  },
+  "scripts": {
+    "barrage" : "artillery quick --duration 60 --rate 10 -n 20 http://localhost:8080/api/ping"
+  }
 }
