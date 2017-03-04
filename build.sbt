@@ -1,5 +1,5 @@
 name := "vote"
-organization := "com.nounse"
+organization := "com.dvisagie"
 version := "1.0"
 scalaVersion := "2.11.8"
 
