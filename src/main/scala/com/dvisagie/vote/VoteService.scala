@@ -29,9 +29,9 @@ object DatabaseModule {
 }
 
 
-trait VoteService extends UserRoutes with StaticRoutes {
+trait VoteService extends UserRoutes with PingRoutes {
   implicit val database: Database = DatabaseModule.provideDatabase
   implicit val userRepository: UserRepository = new MyUserRepository
 
-  val routes: Route = staticFiles ~ userRoutes
+  val routes: Route = pingRoutes ~ userRoutes
 }

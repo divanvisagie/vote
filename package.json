@@ -1,0 +1,12 @@
+{
+  "name": "vote",
+  "version": "1.0.0",
+  "description": "This package is for the entire system",
+  "main": "index.js",
+  "repository": {
+    "url": "git@github.com:divanvisagie/vote.git",
+    "type": "git"
+  },
+  "author": "Divan Visagie <visagiedivan@gmail.com>",
+  "license": "Apache 2"
+}
