@@ -8,3 +8,9 @@ It is the intent of this application to allow for the voting of individuals with
 ```
 
 The application will be available on port 8080 unless otherwise configured in the `docker-compose.yml`.
+
+
+## Usage
+
+### Terminology
+- [Ticket](https://en.wikipedia.org/wiki/Ticket_(election))

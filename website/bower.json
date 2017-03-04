@@ -1,0 +1,22 @@
+{
+  "name": "website",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Divan Visagie <visagiedivan@gmail.com>"
+  ],
+  "license": "Apache 2",
+  "homepage": "https://github.com/divanvisagie/vote",
+  "private": true,
+  "directory": "public/components",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
