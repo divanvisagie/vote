@@ -29,17 +29,17 @@ class UserControllerActor(implicit userRepository: UserRepository) extends Actor
 object UserControllerActor {
 
   final case class CreateUserRequest(
-                                      username: String,
-                                      firstNames: String,
-                                      lastName: String,
-                                      email: String)
+    username: String,
+    firstNames: String,
+    lastName: String,
+    email: String)
 
   final case class CreationRequestResponse(
-                                            message: String,
-                                            username: String)
+    message: String,
+    username: String)
 
   final case class UserResponse(
-                                 username: String,
-                                 firstNames: String,
-                                 lastNames: String)
+    username: String,
+    firstNames: String,
+    lastNames: String)
 }

@@ -1,0 +1,20 @@
+version: '2'
+services:
+    linkerd:
+        image: buoyantio/linkerd:0.8.6
+        volumes:
+            -  "./linkerd.yml:/linkerd.yml"
+        command:
+            "/linkerd.yml"
+        ports:
+            - "9990:9990"
+            - "8080:8080"
+        depends_on:
+            - vote_web
+            - vote_api
+
+    vote_web:
+         build: ./website
+
+    vote_api:
+         build: ./target/docker/stage
