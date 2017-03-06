@@ -1,3 +1,5 @@
+import com.typesafe.sbt.packager.docker._
+
 name := "vote"
 organization := "com.dvisagie"
 version := "1.0"
@@ -7,9 +9,17 @@ scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 enablePlugins(JavaAppPackaging)
 
 packageName in Docker := "divanvisagie/vote"
-dockerExposedPorts := Seq(5000)
 version in Docker := "1.1.2"
-
+dockerCommands += Cmd("RUN","apk add --no-cache bash")
+dockerCommands := Seq(
+  Cmd("FROM", "openjdk:alpine"),
+  Cmd("WORKDIR", "/opt/docker"),
+  Cmd("ADD", "opt /opt"),
+  ExecCmd("RUN" , "chown", "-R", "daemon:daemon", "." ),
+  ExecCmd("RUN", "apk", "add", "--no-cache", "bash"),
+  Cmd("EXPOSE", "5000"),
+  ExecCmd("ENTRYPOINT", "bin/vote")
+)
 
 libraryDependencies ++= {
   val akkaV       = "2.4.16"
