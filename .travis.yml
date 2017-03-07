@@ -16,6 +16,7 @@ matrix:
 
 before_install:
   # run postgres to test migrations
+  - docker pull postgres:alpine
   - docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=vote postgres:alpine
 
 
@@ -43,7 +44,6 @@ install:
 script:
   - sbt clean
   - sbt flywayMigrate
-  - sbt test
   - sbt ++$TRAVIS_SCALA_VERSION -Dfile.encoding=UTF8 -J-XX:ReservedCodeCacheSize=256M test
 
 
