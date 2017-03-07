@@ -1,0 +1,47 @@
+language: scala
+sudo: required
+scala:
+   - 2.11.8
+   - 2.12.0-M4
+
+services:
+   - docker
+
+jdk:
+  - openjdk8
+
+matrix:
+  allow_failures:
+    - scala: 2.12.0-M4
+
+before_cache:
+  # Tricks to avoid unnecessary cache updates
+  - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
+  - find $HOME/.sbt -name "*.lock" -delete
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot/
+    - ui/node_modules
+env:
+  - TRAVIS_NODE_VERSION="6"
+
+install:
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - npm set progress=false -g > /dev/null 2>&1
+  - (cd ui;npm install)
+  - npm install -g yarn
+  - yarn
+  - yarn --file=website/package.json
+
+script:
+  - sbt clean
+  - sbt flywayMigrate
+  - sbt test
+  - sbt ++$TRAVIS_SCALA_VERSION -Dfile.encoding=UTF8 -J-XX:ReservedCodeCacheSize=256M test
+
+
+# after_success:
+#   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+#   - test $TRAVIS_BRANCH == "master" && sh docker-publish.sh
