@@ -1,0 +1,10 @@
+version: '2'
+services:
+  postgres_vote:
+     image: postgres:latest
+     environment:
+         - POSTGRES_USER=postgres
+         - POSTGRES_PASSWORD=postgres
+         - POSTGRES_DB=vote
+     ports:
+       - "5432:5432"

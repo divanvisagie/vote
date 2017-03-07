@@ -7,6 +7,13 @@ It is the intent of this application to allow for the voting of individuals with
 ./run-application
 ```
 
+
+### Migrations
+
+```sh
+sbt flywayMigrate
+```
+
 The application will be available on port 8080 unless otherwise configured in the `docker-compose.yml`.
 
 

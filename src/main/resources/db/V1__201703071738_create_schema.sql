@@ -1,4 +1,3 @@
--- USERS
 CREATE TABLE "users"(
     "id" UUID NOT NULL,
     "login" VARCHAR NOT NULL,
@@ -10,7 +9,6 @@ CREATE TABLE "users"(
 );
 ALTER TABLE "users" ADD CONSTRAINT "users_id" PRIMARY KEY("id");
 
--- PASSWORD RESET CODES
 CREATE TABLE "password_reset_codes"(
   "id" UUID NOT NULL,
   "code" VARCHAR NOT NULL,
@@ -21,7 +19,6 @@ ALTER TABLE "password_reset_codes" ADD CONSTRAINT "password_reset_codes_id" PRIM
 ALTER TABLE "password_reset_codes" ADD CONSTRAINT "password_reset_codes_user_fk"
   FOREIGN KEY("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
--- REMEMBER ME TOKENS
 CREATE TABLE "remember_me_tokens"(
   "id" UUID NOT NULL,
   "selector" VARCHAR NOT NULL,

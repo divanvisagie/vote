@@ -19,4 +19,13 @@ services:
     vote_api:
          build: ./target/docker/stage
          ports:
-          - "5000:5000"
+            - "5000:5000"
+
+    postgres:
+        image: postgres:latest
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=vote
+        ports:
+            - "5432:5432"
