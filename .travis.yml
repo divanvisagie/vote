@@ -14,6 +14,11 @@ matrix:
   allow_failures:
     - scala: 2.12.0-M4
 
+before_install:
+  # run postgres to test migrations
+  - docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=vote postgres:alpine
+
+
 before_cache:
   # Tricks to avoid unnecessary cache updates
   - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
