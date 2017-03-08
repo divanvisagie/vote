@@ -6,7 +6,7 @@ lazy val versions = new {
   val akka       = "2.4.16"
   val akkaHttp   = "10.0.1"
   val scalatest  = "3.0.1"
-  val mockito    = "1.9.5"
+  val mockito    = "1.10.19"
   val slick      = "3.2.0"
 }
 
@@ -48,7 +48,9 @@ libraryDependencies ++=
     "org.postgresql" % "postgresql" % "9.3-1100-jdbc4",
     "com.typesafe.slick" %% "slick" % versions.slick,
     "org.slf4j" % "slf4j-nop" % "1.7.7",
+    "org.mockito" % "mockito-core" % versions.mockito,
 
+    "org.mockito" % "mockito-core" % versions.mockito % "test",
     "org.scalatest"     %% "scalatest" % versions.scalatest % "test"
   )
 
