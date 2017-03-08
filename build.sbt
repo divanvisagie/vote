@@ -21,7 +21,6 @@ scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 flywayUrl := "jdbc:postgresql://localhost:5432/vote"
 flywayUser := "postgres"
 flywayPassword := "postgres"
-//flywayLocations += "filesystem:database/flyway/sql"
 
 enablePlugins(JavaServerAppPackaging)
 packageName in Docker := "divanvisagie/vote"
