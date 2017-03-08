@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import UptimeComponent from './components/timer/UptimeComponent';
+import UptimeComponent from './components/container/UptimeComponent';
 
 
 const App = React.createClass({
