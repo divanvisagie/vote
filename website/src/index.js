@@ -16,7 +16,3 @@ ReactDOM.render(
   ,
   document.getElementById('root')
 );
-
-setInterval(function() {
-  store.dispatch({ type: 'INC' });
-},1000)

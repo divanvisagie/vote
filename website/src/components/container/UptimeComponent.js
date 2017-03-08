@@ -3,16 +3,15 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    text: state.counter,
+    text: state.uptime,
     prefix: 'Uptime'
   }
 };
 const mapDispatchToProps = (dispatch) => {
-  return {
-    // onTodoClick: (id) => {
-    //   dispatch(toggleTodo(id))
-    // }
-  }
+  setInterval(function() {
+      dispatch({ type: 'UPTIME_INC' });
+  },1000)
+  return {}
 };
 
 const UptimeComponent = connect(

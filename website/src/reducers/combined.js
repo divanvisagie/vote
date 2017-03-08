@@ -1,8 +1,18 @@
 import { combineReducers } from 'redux';
 //counter reducer
-function counter(state = 0, action) {
+function uptime(state = 0, action) {
   switch (action.type) {
-    case 'INC':
+    case 'UPTIME_INC':
+      state += 1;
+      return state;
+    default:
+      return state;
+  }
+}
+
+function stepper(state = 0, action) {
+  switch (action.type) {
+    case 'STEPPER_INC':
       state += 1;
       return state;
     default:
@@ -16,5 +26,5 @@ function boringReducer(state = 'empty', action) {
 }
 
 export default combineReducers({
-  counter, boringReducer
+  uptime, stepper
 });
