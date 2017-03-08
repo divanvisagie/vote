@@ -1,5 +1,7 @@
 # Vote
 
+[![Build Status](https://travis-ci.org/divanvisagie/vote.svg?branch=master)](https://travis-ci.org/divanvisagie/vote)
+
 It is the intent of this application to allow for the voting of individuals with regards to some sort of rewards ceremony
 
 ## Running
