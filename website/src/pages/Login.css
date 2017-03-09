@@ -1,0 +1,33 @@
+.Login {
+    text-align: center;
+    display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+	align-items: center;
+}
+
+.login-box {
+    margin-top: 5rem;
+    background: #eee;
+    padding: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 3px;
+    height: 250px;
+    min-width: 320px;
+}
+
+.button-box {
+    text-align: right;
+    width: 100%;
+}
+
+.button-box > * {
+    margin-left: 10px;
+}
