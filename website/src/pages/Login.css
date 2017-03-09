@@ -1,5 +1,5 @@
 .Login {
-    text-align: center;
+    text-align: left;
     display: -ms-flexbox;
 	display: -webkit-flex;
 	display: flex;
@@ -11,14 +11,12 @@
 
 .login-box {
     margin-top: 5rem;
-    background: #eee;
     padding: 20px;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 30px;
     padding-right: 30px;
-    border-radius: 3px;
     height: 250px;
     min-width: 320px;
 }
