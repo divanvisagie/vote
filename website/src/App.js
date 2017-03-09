@@ -18,9 +18,7 @@ const App = React.createClass({
           
         </Navbar>
         <section className="container">
-          <h1>Hello World Yo</h1>
-          <UptimeComponent />
-          <StepperComponent />
+          {this.props.children}
         </section>
       </main>
     );
