@@ -2,7 +2,7 @@ package com.dvisagie.vote.repositories
 
 import java.util.UUID
 
-import com.dvisagie.vote.actors.UserControllerActor.UserResponse
+import com.dvisagie.vote.users.UserControllerActor.UserResponse
 import slick.jdbc.PostgresProfile.api.Database
 import slick.jdbc.PostgresProfile.api._
 

@@ -7,7 +7,7 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import akka.util.Timeout
 import com.dvisagie.vote.UserRoutes
-import com.dvisagie.vote.actors.UserControllerActor.{CreateUserRequest, CreationRequestResponse, UserResponse}
+import com.dvisagie.vote.users.UserControllerActor.{CreateUserRequest, CreationRequestResponse, UserResponse}
 import com.dvisagie.vote.repositories.UserRepository
 import org.scalatest._
 import org.scalatest.mockito.MockitoSugar

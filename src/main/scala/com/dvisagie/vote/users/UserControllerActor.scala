@@ -1,4 +1,4 @@
-package com.dvisagie.vote.actors
+package com.dvisagie.vote.users
 
 import java.util.UUID
 
