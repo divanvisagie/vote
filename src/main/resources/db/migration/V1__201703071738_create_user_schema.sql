@@ -10,12 +10,12 @@ CREATE TABLE "users"(
 CREATE TABLE "user_roles"(
     "id" BIGSERIAL PRIMARY KEY,
     "name" VARCHAR NOT NULL
-)
+);
 
 CREATE TABLE "current_user_roles"(
     "id" BIGSERIAL PRIMARY KEY,
-    "role_id" BIGSERIAL PRIMARY KEY,
-    "user_id" UUID
+    "role_id" BIGSERIAL  NOT NULL,
+    "user_id" UUID NOT NULL
 );
 ALTER TABLE "current_user_roles" ADD CONSTRAINT "current_user_roles_user_fk"
     FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
