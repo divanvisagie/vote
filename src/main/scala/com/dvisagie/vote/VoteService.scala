@@ -6,6 +6,7 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import akka.util.Timeout
+import com.dvisagie.vote.injector.Provider
 import com.dvisagie.vote.repositories.{MyUserRepository, UserRepository}
 import spray.json.DefaultJsonProtocol
 import slick.jdbc.PostgresProfile.api._
@@ -29,9 +30,16 @@ object DatabaseModule {
 }
 
 
+class ProviderImpl extends Provider {
+  def userRepository = new MyUserRepository(database)
+
+  val database: _root_.slick.jdbc.PostgresProfile.api.Database = DatabaseModule.provideDatabase
+}
+
+
 trait VoteService extends UserRoutes with PingRoutes {
   implicit val database: Database = DatabaseModule.provideDatabase
-  implicit val userRepository: UserRepository = new MyUserRepository
+  implicit val provider: Provider = new ProviderImpl()
 
   val routes: Route = pingRoutes ~ userRoutes
 }

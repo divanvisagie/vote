@@ -19,7 +19,7 @@ case class User(
                ) {
 }
 
-class MyUserRepository(implicit database: Database) extends UserRepository {
+class MyUserRepository(database: Database) extends UserRepository {
 
   private class UserTable(tag: Tag) extends Table[User](tag, "users"){
     def id = column[UUID]("id", O.PrimaryKey, O.Unique)

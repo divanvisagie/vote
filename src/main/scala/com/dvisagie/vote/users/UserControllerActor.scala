@@ -3,13 +3,16 @@ package com.dvisagie.vote.users
 import java.util.UUID
 
 import akka.actor.{Actor, ReceiveTimeout}
+import com.dvisagie.vote.injector.Provider
 import com.dvisagie.vote.repositories.UserRepository
 
 import scala.concurrent.duration._
 
-class UserControllerActor(implicit userRepository: UserRepository) extends Actor {
+class UserControllerActor(implicit provider: Provider) extends Actor {
   import UserControllerActor._
   context.setReceiveTimeout(5.seconds)
+
+  val userRepository: UserRepository = provider.userRepository
 
   def receive: Receive = {
     case createUserRequest: CreateUserRequest =>

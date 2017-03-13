@@ -9,6 +9,7 @@ import akka.util.Timeout
 import com.dvisagie.vote.UserRoutes
 import com.dvisagie.vote.users.UserControllerActor.{CreateUserRequest, CreationRequestResponse, UserResponse}
 import com.dvisagie.vote.repositories.UserRepository
+import com.dvisagie.vote.injector.Provider
 import org.scalatest._
 import org.scalatest.mockito.MockitoSugar
 import org.mockito.Mockito._
@@ -16,15 +17,26 @@ import org.mockito.Mockito._
 import scala.concurrent.ExecutionContextExecutor
 import scala.concurrent.duration._
 
-class UserEndpointSpec extends FlatSpec with Matchers with ScalatestRouteTest with UserRoutes with MockitoSugar {
-  implicit val timeout: Timeout = Timeout(10.seconds)
-  implicit val executionContext: ExecutionContextExecutor = system.dispatcher
+class MockProvider extends Provider with MockitoSugar {
+  import slick.jdbc.PostgresProfile.api.Database
 
-  implicit val userRepository: UserRepository = mock[UserRepository]
+  val userRepository: UserRepository = mock[UserRepository]
   val dolores = Some(UserResponse("dolores","Dolores","Abernathy"))
   when(userRepository.getUserForId(UUID.fromString("00000000-0000-0000-0000-000000000000"))) thenReturn dolores
   when(userRepository.getUserForUsername("dolores")) thenReturn dolores
   when(userRepository.getUserForUsername("jack")) thenReturn None
+
+
+  override val database: Database = mock[Database]
+
+}
+
+
+class UserEndpointSpec extends FlatSpec with Matchers with ScalatestRouteTest with UserRoutes {
+  implicit val timeout: Timeout = Timeout(10.seconds)
+  implicit val executionContext: ExecutionContextExecutor = system.dispatcher
+
+  val provider = new MockProvider()
 
   val expectedCreationResponse = CreationRequestResponse("message received", "dolores")
   val expectedUserResponse = UserResponse("dolores","Dolores","Abernathy")
