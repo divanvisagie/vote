@@ -1,27 +1,16 @@
 package com.dvisagie.vote.users
 
-import akka.actor.{ActorRef, ActorSystem, Props}
+import akka.actor.{ActorRef, Props}
 import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.server.Directives.{as, complete, entity, path, post, _}
 import akka.http.scaladsl.server.Route
 import akka.pattern.ask
-import akka.util.Timeout
 import com.dvisagie.vote.RouteSupport
-import com.dvisagie.vote.injector.Provider
 import com.dvisagie.vote.users.UserControllerActor.UserResponse
 import io.circe.generic.auto._
-
-import scala.concurrent.ExecutionContext
 import scala.util.{Failure, Success}
 
 trait UserRoutes extends RouteSupport {
-
-
-  implicit val provider: Provider
-  implicit val system: ActorSystem
-  implicit val timeout: Timeout
-  implicit val executionContext: ExecutionContext
-
 
   def userControllerActor: ActorRef = system.actorOf(Props(new UserControllerActor))
 
