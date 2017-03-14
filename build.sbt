@@ -8,6 +8,7 @@ lazy val versions = new {
   val scalatest  = "3.0.1"
   val mockito    = "1.10.19"
   val slick      = "3.2.0"
+  val circe      = "0.7.0"
 }
 
 
@@ -48,8 +49,8 @@ libraryDependencies ++=
     "com.typesafe.slick" %% "slick" % versions.slick,
     "org.slf4j" % "slf4j-nop" % "1.7.7",
     "org.mockito" % "mockito-core" % versions.mockito,
-    "io.fcomb" %% "akka-http-circe" % "10.0.4_0.7.0" ,
     "de.heikoseeberger" %% "akka-http-circe" % "1.13.0",
+    "io.circe" %% "circe-generic" % versions.circe ,
 
     "org.mockito" % "mockito-core" % versions.mockito % "test",
     "org.scalatest"     %% "scalatest" % versions.scalatest % "test"
