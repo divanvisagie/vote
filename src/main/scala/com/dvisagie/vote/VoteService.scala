@@ -8,6 +8,7 @@ import akka.http.scaladsl.server.Route
 import akka.util.Timeout
 import com.dvisagie.vote.injector.Provider
 import com.dvisagie.vote.repositories.{MyUserRepository, UserRepository}
+import com.dvisagie.vote.users.UserRoutes
 import spray.json.DefaultJsonProtocol
 import slick.jdbc.PostgresProfile.api._
 

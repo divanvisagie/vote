@@ -6,10 +6,10 @@ import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import akka.util.Timeout
-import com.dvisagie.vote.UserRoutes
 import com.dvisagie.vote.users.UserControllerActor.{CreateUserRequest, CreationRequestResponse, UserResponse}
 import com.dvisagie.vote.repositories.UserRepository
 import com.dvisagie.vote.injector.Provider
+import com.dvisagie.vote.users.{RegistrationActor, UserRoutes}
 import org.scalatest._
 import org.scalatest.mockito.MockitoSugar
 import org.mockito.Mockito._
@@ -42,11 +42,11 @@ class UserEndpointSpec extends FlatSpec with Matchers with ScalatestRouteTest wi
   val expectedUserResponse = UserResponse("dolores","Dolores","Abernathy")
 
   "Create User" should "respond with success message" in {
-    val createUserRequest = CreateUserRequest(
+    val createUserRequest = RegistrationActor.UserRegistrationRequest(
       username = "dolores",
-      firstNames = "Dolores",
-      lastName = "Abernathy",
-      email = "dolores@westworld.com")
+      email = "dolores@westworld.com",
+      password = "Dolor35"
+    )
 
     Post("/api/user", createUserRequest) ~> userRoutes ~> check {
       handled shouldEqual true
