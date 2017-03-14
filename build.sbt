@@ -48,9 +48,11 @@ libraryDependencies ++=
     "com.typesafe.slick" %% "slick" % versions.slick,
     "org.slf4j" % "slf4j-nop" % "1.7.7",
     "org.mockito" % "mockito-core" % versions.mockito,
+    "io.fcomb" %% "akka-http-circe" % "10.0.4_0.7.0" ,
+    "de.heikoseeberger" %% "akka-http-circe" % "1.13.0",
 
     "org.mockito" % "mockito-core" % versions.mockito % "test",
     "org.scalatest"     %% "scalatest" % versions.scalatest % "test"
   )
 
-
+resolvers += Resolver.bintrayRepo("fcomb", "maven")

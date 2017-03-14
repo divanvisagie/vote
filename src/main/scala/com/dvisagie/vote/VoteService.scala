@@ -6,6 +6,7 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import akka.util.Timeout
+import com.dvisagie.vote.authentication.LoginRoutes
 import com.dvisagie.vote.injector.Provider
 import com.dvisagie.vote.repositories.{MyUserRepository, UserRepository}
 import com.dvisagie.vote.users.UserRoutes
@@ -38,9 +39,9 @@ class ProviderImpl extends Provider {
 }
 
 
-trait VoteService extends UserRoutes with PingRoutes {
+trait VoteService extends UserRoutes with PingRoutes with LoginRoutes {
   implicit val database: Database = DatabaseModule.provideDatabase
   implicit val provider: Provider = new ProviderImpl()
 
-  val routes: Route = pingRoutes ~ userRoutes
+  val routes: Route = pingRoutes ~ userRoutes ~ loginRoutes
 }

@@ -17,22 +17,23 @@ import org.mockito.Mockito._
 import scala.concurrent.ExecutionContextExecutor
 import scala.concurrent.duration._
 
-class MockProvider extends Provider with MockitoSugar {
-  import slick.jdbc.PostgresProfile.api.Database
-
-  val userRepository: UserRepository = mock[UserRepository]
-  val dolores = Some(UserResponse("dolores","Dolores","Abernathy"))
-  when(userRepository.getUserForId(UUID.fromString("00000000-0000-0000-0000-000000000000"))) thenReturn dolores
-  when(userRepository.getUserForUsername("dolores")) thenReturn dolores
-  when(userRepository.getUserForUsername("jack")) thenReturn None
-
-
-  override val database: Database = mock[Database]
-
-}
+import io.circe.generic.auto._
 
 
 class UserEndpointSpec extends FlatSpec with Matchers with ScalatestRouteTest with UserRoutes {
+  class MockProvider extends Provider with MockitoSugar {
+    import slick.jdbc.PostgresProfile.api.Database
+
+    val userRepository: UserRepository = mock[UserRepository]
+    val dolores = Some(UserResponse("dolores","Dolores","Abernathy"))
+    when(userRepository.getUserForId(UUID.fromString("00000000-0000-0000-0000-000000000000"))) thenReturn dolores
+    when(userRepository.getUserForUsername("dolores")) thenReturn dolores
+    when(userRepository.getUserForUsername("jack")) thenReturn None
+
+    override val database: Database = mock[Database]
+  }
+
+
   implicit val timeout: Timeout = Timeout(10.seconds)
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
