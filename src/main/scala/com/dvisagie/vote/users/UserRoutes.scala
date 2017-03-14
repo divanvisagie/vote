@@ -1,32 +1,28 @@
 package com.dvisagie.vote.users
 
 import akka.actor.{ActorRef, ActorSystem, Props}
-import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.server.Directives.{as, complete, entity, path, post, _}
 import akka.http.scaladsl.server.Route
 import akka.pattern.ask
 import akka.util.Timeout
-import com.dvisagie.vote.Protocols
+import com.dvisagie.vote.RouteSupport
 import com.dvisagie.vote.injector.Provider
-import com.dvisagie.vote.users.UserControllerActor.{CreateUserRequest, CreationRequestResponse, UserResponse}
-import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
-import spray.json.RootJsonFormat
-
-import scala.util.{Failure, Success}
+import com.dvisagie.vote.users.UserControllerActor.UserResponse
 import io.circe.generic.auto._
 
 import scala.concurrent.ExecutionContext
+import scala.util.{Failure, Success}
 
-trait UserRoutes extends FailFastCirceSupport {
-//  implicit val createUserRequestFormat: RootJsonFormat[CreateUserRequest] = jsonFormat4(CreateUserRequest)
-//  implicit val creationRequestResponseFormat: RootJsonFormat[CreationRequestResponse] = jsonFormat2(CreationRequestResponse)
-//  implicit val userResponse: RootJsonFormat[UserResponse] = jsonFormat3(UserResponse)
-//  implicit val userRegistrationRequest: RootJsonFormat[RegistrationActor.UserRegistrationRequest] = jsonFormat3(RegistrationActor.UserRegistrationRequest)
+trait UserRoutes extends RouteSupport {
+
+
   implicit val provider: Provider
   implicit val system: ActorSystem
   implicit val timeout: Timeout
   implicit val executionContext: ExecutionContext
+
+
   def userControllerActor: ActorRef = system.actorOf(Props(new UserControllerActor))
 
   val userRoutes: Route =

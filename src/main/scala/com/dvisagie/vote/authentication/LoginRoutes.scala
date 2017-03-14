@@ -1,21 +1,15 @@
 package com.dvisagie.vote.authentication
 
-import akka.actor.{ActorSystem, Props}
-import akka.http.scaladsl.model.StatusCodes._
-import akka.http.scaladsl.server.Directives.{as, complete, entity, path, post, _}
+import akka.actor.ActorSystem
+import akka.http.scaladsl.server.Directives.{complete, path, post, _}
 import akka.http.scaladsl.server.Route
-import akka.pattern.ask
 import akka.util.Timeout
-import com.dvisagie.vote.Protocols
+import com.dvisagie.vote.RouteSupport
 import com.dvisagie.vote.injector.Provider
-import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
-
-import scala.util.{Failure, Success}
-import io.fcomb.akka.http.CirceSupport._
 
 import scala.concurrent.ExecutionContext
 
-trait LoginRoutes extends FailFastCirceSupport {
+trait LoginRoutes extends RouteSupport {
 
   implicit val system: ActorSystem
   implicit val timeout: Timeout
