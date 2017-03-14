@@ -15,7 +15,7 @@ lazy val versions = new {
 name := "vote"
 organization := "com.dvisagie"
 version := "1.0"
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.0"
 
 scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 
